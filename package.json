@@ -24,6 +24,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@types/marked": "0.0.28",
     "lodash-es": "^4.17.4",
     "marked": "^0.3.6"
   },
@@ -38,7 +39,6 @@
     "@types/karma": "^0.13.36",
     "@types/lodash": "^4.14.71",
     "@types/lodash-es": "^4.14.5",
-    "@types/marked": "0.0.28",
     "@types/node": "^8.0.17",
     "codelyzer": "^3.1.2",
     "copyfiles": "^1.2.0",
