@@ -6,7 +6,6 @@ import 'marked';
 export class MarkdownService {
   callback: Function;
   options = {
-    renderer: new marked.Renderer(),
     gfm: true,
     tables: true,
     breaks: true,
