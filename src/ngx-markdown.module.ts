@@ -1,5 +1,5 @@
 // external
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 // internal
@@ -19,7 +19,7 @@ import { MarkdownService } from './ngx-markdown.service';
   ]
 })
 export class MarkdownModule {
-  static forRoot() {
+  static forRoot(): ModuleWithProviders {
     return {
       ngModule: MarkdownModule,
       providers: [
@@ -27,9 +27,9 @@ export class MarkdownModule {
       ]
     }
   }
-  static forChild() {
+  static forChild(): ModuleWithProviders {
     return {
       ngModule: MarkdownModule
-    }    
+    }
   }
 }
