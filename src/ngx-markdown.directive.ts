@@ -12,11 +12,11 @@ export class MarkdownDirective implements OnInit {
   @Input() callback: Function;
 
   constructor(
-    public el: ElementRef,
-    public markdownService: MarkdownService
+    private el: ElementRef,
+    private markdownService: MarkdownService
   ) { }
 
   ngOnInit() {
-    this.el.nativeElement.innerHTML = this.markdownService.marked(this.el, this.options, this.callback);
+    this.el.nativeElement.innerHTML = this.markdownService.init(this.el, this.options, this.callback);
   }
 }
