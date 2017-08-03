@@ -1,11 +1,10 @@
-
-// import angular from 'rollup-plugin-angular';
+import angular from 'rollup-plugin-angular';
 import commonjs from 'rollup-plugin-commonjs';
-import html from 'rollup-plugin-html';
+// import html from 'rollup-plugin-html';
 import nodeResolve from 'rollup-plugin-node-resolve';
 import typescript from 'rollup-plugin-typescript';
 import uglify from 'rollup-plugin-uglify';
-import { minify } from 'uglify-es';
+// import { minify } from 'uglify-es';
 
 export default {
   entry: 'dist/index.js',
@@ -16,11 +15,10 @@ export default {
   moduleName: '@ngx-markdown/core',
   onwarn,
   plugins: [
-    commonjs(),
-    html({
-      include: '**/*.html',
-      htmlMinifierOptions: {
-        caseSensitive: true // need to do not lower letter
+    angular(),
+    commonjs({
+      namedExports: {
+        'node_modules/rxjs/**': ['named']
       }
     }),
     nodeResolve({
@@ -46,7 +44,7 @@ export default {
     typescript({
       typescript: require('./node_modules/typescript')
     }),
-    uglify({}, minify)
+    uglify()
   ]
 };
 
