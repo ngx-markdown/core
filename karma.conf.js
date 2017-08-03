@@ -72,7 +72,7 @@ module.exports = function(config) {
           // – see https://github.com/rollup/rollup-plugin-commonjs
           main: true,  // Default: true
 
-          extensions: [ '.js', '.json', '.ts' ]
+          extensions: [ '.js', '.json' ]
         }),
         typescript({
           typescript: require('./node_modules/typescript')
