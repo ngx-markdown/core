@@ -3,12 +3,12 @@ import { Component, ElementRef, OnInit, Input, ViewChild, ViewEncapsulation } fr
 
 // internal
 import { MarkdownService } from './ngx-markdown.service';
-import template from './ngx-markdown.component.html';
+// import template from ;
 
 @Component({
   encapsulation: ViewEncapsulation.None,
   selector: 'ngx-markdown',
-  template
+  templateUrl: './ngx-markdown.component.html'
 })
 export class MarkdownComponent implements OnInit {
   @Input() callback: Function;
