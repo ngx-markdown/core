@@ -15,10 +15,21 @@ import { MarkdownService } from './ngx-markdown.service';
   imports: [ CommonModule ],
   exports: [
     MarkdownComponent,
-    MarkdownDirective,
-  ],
-  providers: [
-    MarkdownService
-  ],
+    MarkdownDirective
+  ]
 })
-export class MarkdownModule { }
+export class MarkdownModule {
+  static forRoot() {
+    return {
+      ngModule: MarkdownModule,
+      providers: [
+        MarkdownService
+      ]
+    }
+  }
+  static forChild() {
+    return {
+      ngModule: MarkdownModule
+    }    
+  }
+}
