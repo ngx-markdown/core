@@ -62,6 +62,6 @@ Thumbs.db
 .DS_Store
 
 # Ignored files
-.vscode
-build
-dist
+.vscode/
+build/
+dist/
