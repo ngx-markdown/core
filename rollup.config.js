@@ -1,10 +1,9 @@
 import angular from 'rollup-plugin-angular';
 import commonjs from 'rollup-plugin-commonjs';
-// import html from 'rollup-plugin-html';
 import nodeResolve from 'rollup-plugin-node-resolve';
 import typescript from 'rollup-plugin-typescript';
 import uglify from 'rollup-plugin-uglify';
-// import { minify } from 'uglify-es';
+import { minify } from 'uglify-es';
 
 export default {
   entry: 'dist/index.js',
@@ -16,11 +15,7 @@ export default {
   onwarn,
   plugins: [
     angular(),
-    commonjs({
-      namedExports: {
-        'node_modules/rxjs/**': ['named']
-      }
-    }),
+    commonjs(),
     nodeResolve({
       // use "es2015" field for ES2015 modules with ES2015 code,
 	    // if possible
@@ -44,7 +39,7 @@ export default {
     typescript({
       typescript: require('./node_modules/typescript')
     }),
-    uglify()
+    uglify({}, minify)
   ]
 };
 
