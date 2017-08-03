@@ -54,12 +54,6 @@ module.exports = function(config) {
       plugins: [
         angular(),
         commonjs(),
-        html({
-          include: '**/*.html',
-          htmlMinifierOptions: {
-            caseSensitive: true // need to do not lower letter
-          }
-        }),
         nodeResolve({
           // use "es2015" field for ES2015 modules with ES2015 code,
           // if possible
