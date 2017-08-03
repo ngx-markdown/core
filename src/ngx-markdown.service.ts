@@ -1,6 +1,6 @@
 // external
 import { ElementRef, Injectable } from '@angular/core';
-import * as marked from 'marked';
+import 'marked';
 
 @Injectable()
 export class MarkdownService {
@@ -18,7 +18,7 @@ export class MarkdownService {
 
   constructor() { }
 
-  public marked(content: ElementRef, options: any, callback: Function): any {
+  public init(content: ElementRef, options: any, callback: Function): any {
     return marked.setOptions((options) ? options : this.options)(content.nativeElement.innerHTML, callback);
   }
 }
