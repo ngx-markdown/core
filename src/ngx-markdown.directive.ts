@@ -12,8 +12,8 @@ export class MarkdownDirective implements OnInit {
   @Input() callback: Function;
 
   constructor(
-    private el: ElementRef,
-    private markdownService: MarkdownService
+    public el: ElementRef,
+    public markdownService: MarkdownService
   ) { }
 
   ngOnInit() {

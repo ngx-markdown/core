@@ -15,7 +15,7 @@ export class MarkdownComponent implements OnInit {
   @Input() options: any;
   @ViewChild('content', { read: ElementRef }) content: ElementRef;
 
-  constructor(private markdownService: MarkdownService) { }
+  constructor(public markdownService: MarkdownService) { }
 
   ngOnInit() {
     this.content.nativeElement.innerHTML = this.markdownService.marked(this.content, this.options, this.callback);
