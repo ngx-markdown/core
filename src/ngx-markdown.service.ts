@@ -18,7 +18,7 @@ export class MarkdownService {
 
   constructor() { }
 
-  public marked(content: ElementRef, ...args: any[]) {
-    return marked.setOptions((args[0]) ? args[0] : this.options)(content.nativeElement.innerHTML, args[1]);
+  public marked(content: ElementRef, options: any, callback: Function): any {
+    return marked.setOptions((options) ? options : this.options)(content.nativeElement.innerHTML, callback);
   }
 }
