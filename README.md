@@ -1,7 +1,8 @@
 # @ngx-markdown/core
-Angular 2+ markdown to html using marked a markdown parser and compiler.
+Angular 2+ markdown to html using [marked](https://github.com/chjj/marked) a markdown parser and compiler.
 
-## Table of contents
+----
+
 * [Installation](#installation)
 * [Usage](#usage)
 * [Style guide](#style-guide)
@@ -11,6 +12,7 @@ Angular 2+ markdown to html using marked a markdown parser and compiler.
 * [License](#license)
 * [Donate](#donate)
 
+----
 
 ## Installation
 
