@@ -7,12 +7,16 @@ import { MarkdownComponent } from './ngx-markdown.component';
 import { MarkdownDirective } from './ngx-markdown.directive';
 import { MarkdownService } from './ngx-markdown.service';
 
+/**
+ * @export
+ * @class MarkdownModule
+ */
 @NgModule({
+  imports: [ CommonModule ],
   declarations: [
     MarkdownComponent,
     MarkdownDirective
   ],
-  imports: [ CommonModule ],
   exports: [
     MarkdownComponent,
     MarkdownDirective
