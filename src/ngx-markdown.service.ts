@@ -1,7 +1,13 @@
 // external
 import { ElementRef, Injectable } from '@angular/core';
-import 'marked';
+import * as m from 'marked';
+const marked = m['default'];
 
+/**
+ * Service to transform markdown to html
+ * @export
+ * @class MarkdownService
+ */
 @Injectable()
 export class MarkdownService {
   callback: Function;
