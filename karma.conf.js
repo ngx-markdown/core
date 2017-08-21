@@ -1,9 +1,8 @@
 // Karma configuration
 // Generated on Mon Mar 20 2017 15:06:42 GMT+0100 (CET)
 
-const angular = require('rollup-plugin-angular');
 const commonjs = require('rollup-plugin-commonjs');
-const html = require('rollup-plugin-html');
+const angular = require('rollup-plugin-angular');
 const nodeResolve = require('rollup-plugin-node-resolve');
 const typescript = require('rollup-plugin-typescript');
 
@@ -28,6 +27,7 @@ module.exports = function(config) {
 
     plugins: [
       require('karma-chrome-launcher'),
+      require('karma-firefox-launcher'),
       require('karma-coverage'),
       require('karma-rollup-preprocessor'),
       require('karma-jasmine'),
@@ -48,7 +48,7 @@ module.exports = function(config) {
       context: 'this',
       // will help to prevent conflicts between different tests entries
       moduleName: 'ngxmarkdown',
-      format: 'iife',
+      format: 'umd',
       sourceMap: false,
       // rollup settings. See Rollup documentation
       plugins: [
@@ -108,12 +108,12 @@ module.exports = function(config) {
     
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome'],
+    browsers: ['Firefox'],
 
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false,
+    singleRun: true,
 
     // Concurrency level
     // how many browser should be started simultaneous
