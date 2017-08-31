@@ -15,8 +15,8 @@ import { MarkdownService } from './ngx-markdown.service';
   templateUrl: './ngx-markdown.component.html'
 })
 export class MarkdownComponent implements OnInit {
-  @Input() callback: Function;
-  @Input() options: any;
+  @Input() callback: any;
+  @Input() options: marked.MarkedOptions;
   @ViewChild('content', { read: ElementRef }) content: ElementRef;
 
   constructor(private markdownService: MarkdownService) { }
