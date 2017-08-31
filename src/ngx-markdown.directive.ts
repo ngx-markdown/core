@@ -8,8 +8,8 @@ import { MarkdownService } from './ngx-markdown.service';
   selector: '[ngx-markdown]',
 })
 export class MarkdownDirective implements OnInit {
-  @Input() options: any;
-  @Input() callback: Function;
+  @Input() options: marked.MarkedOptions;
+  @Input() callback: any;
 
   constructor(
     private el: ElementRef,
