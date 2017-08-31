@@ -2,6 +2,11 @@
 
 // external
 import { ElementRef, Injectable } from '@angular/core';
+/**
+ * ----
+ * this is because karma exporting with object wrappered by property default
+ * ----
+ */
 import { default as marked } from 'marked';
 
 /**
