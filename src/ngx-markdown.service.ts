@@ -9,8 +9,7 @@ import { default as marked } from 'marked';
  */
 @Injectable()
 export class MarkdownService {
-  callback: Function;
-  options = {
+  options: marked.MarkedOptions = {
     gfm: true,
     tables: true,
     breaks: true,
@@ -22,7 +21,7 @@ export class MarkdownService {
 
   constructor() { }
 
-  public init(content: ElementRef, options: any, callback: marked.MarkedOptions): any {
+  public init(content: ElementRef, options: marked.MarkedOptions, callback?: any): string {
     return marked.setOptions((options) ? options : this.options)(content.nativeElement.innerHTML, callback);
   }
 }
