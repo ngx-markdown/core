@@ -1,7 +1,6 @@
 // external
 import { ElementRef, Injectable } from '@angular/core';
-import * as m from 'marked';
-const marked = m['default'];
+import { default as marked } from 'marked';
 
 /**
  * Service to transform markdown to html
@@ -23,7 +22,7 @@ export class MarkdownService {
 
   constructor() { }
 
-  public init(content: ElementRef, options: any, callback: Function): any {
+  public init(content: ElementRef, options: any, callback: marked.MarkedOptions): any {
     return marked.setOptions((options) ? options : this.options)(content.nativeElement.innerHTML, callback);
   }
 }
