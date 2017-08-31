@@ -4,6 +4,20 @@ const angular = require('rollup-plugin-angular');
 const commonjs = require('rollup-plugin-commonjs');
 const nodeResolve = require('rollup-plugin-node-resolve');
 const typescript = require('rollup-plugin-typescript');
+const uglify = require('rollup-plugin-uglify');
+const uglifyEs = require('uglify-es');
+
+// rollup-plugin-angular addons
+const sass = require('node-sass');
+const CleanCSS = require('clean-css');
+const htmlMinifier = require('html-minifier');
+
+const cssmin = new CleanCSS();
+const htmlminOpts = {
+  caseSensitive: true,
+  collapseWhitespace: true,
+  removeComments: true,
+};
 
 module.exports = function(config) {
   config.set({
@@ -19,19 +33,22 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'test/*.ts',
-      'src/*.spec.ts'
+      // Make sure to disable Karma’s file watcher
+      // because the preprocessor will use its own.
+      { pattern: 'test/*.ts', watched: false },
+      { pattern: 'src/*.spec.ts', watched: false },
+      { pattern: 'src/**/*.spec.ts', watched: false }
     ],
 
 
     plugins: [
+      require('karma-jasmine'),
       require('karma-chrome-launcher'),
+      require('karma-jasmine-html-reporter'),
       require('karma-firefox-launcher'),
       require('karma-coverage'),
       require('karma-rollup-preprocessor'),
-      require('karma-jasmine'),
-      require('karma-typescript')
-    ],    
+    ],
 
     // list of files to exclude
     exclude: [],
@@ -41,17 +58,26 @@ module.exports = function(config) {
     preprocessors: {
       'test/*.ts': ['rollup'],
       'src/*.spec.ts': ['rollup'],
+      'src/**/*.spec.ts': ['rollup'],
     },
 
     rollupPreprocessor: {
-      context: 'this',
       // will help to prevent conflicts between different tests entries
-      moduleName: 'ngx-markdown.core',
+      name: 'ngx-markdown.core',
       format: 'umd',
-      sourceMap: true,
+      sourcemap: 'inline',
+      exports: 'named',
       // rollup settings. See Rollup documentation
       plugins: [
-        angular(),
+        angular({
+          preprocessors: {
+            template: template => htmlMinifier.minify(template, htmlminOpts),
+            style: scss => {
+              const css = sass.renderSync({ data: scss }).css;
+              return cssmin.minify(css).styles;
+            },
+          }
+        }),
         commonjs(),
         nodeResolve({
           // use "module" field for ES6 module if possible
@@ -93,14 +119,15 @@ module.exports = function(config) {
         }),
         typescript({
           typescript: require('./node_modules/typescript')
-        })
+        }),
+        uglify({}, uglifyEs.minify)
       ]
     },
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['progress', 'kjhtml'],
 
 
     // web server port
