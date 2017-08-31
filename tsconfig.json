@@ -30,7 +30,6 @@
     ]
   },
   "files": [
-    "typings.d.ts",
     "src/index.ts"
   ]
 }
