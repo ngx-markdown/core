@@ -1,3 +1,5 @@
+/// <reference path="../typings/index.d.ts" />
+
 // external
 import { ElementRef, Injectable } from '@angular/core';
 import { default as marked } from 'marked';
