@@ -1,1 +1,3 @@
-declare var __karma__: any;
+declare module 'marked' {
+  export default marked;
+}
