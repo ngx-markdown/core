@@ -1,3 +1,9 @@
-<div #content>
-  <ng-content></ng-content>
-</div>
+<ng-container *ngIf="!string">
+  <!-- ng-content -->
+  <div #el><ng-content></ng-content></div>
+</ng-container>
+<ng-container *ngIf="string">
+  <!-- string -->
+  <div *ngIf="stringMarked else loading"  #el [innerHTML]="stringMarked"></div>
+</ng-container>
+<ng-template #loading><div [innerHTML]="markdownService.config[0].loadingTemplate"></div></ng-template>
