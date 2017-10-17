@@ -1,8 +1,11 @@
+
 # @ngx-markdown/core
-Angular 2+ markdown to html using [marked](https://github.com/chjj/marked) a markdown parser and compiler.
+
+Angular 2+ markdown to html module using [marked](https://github.com/chjj/marked) a markdown parser and compiler.
 
 ----
 
+* [Demonstration](#demonstration)
 * [Installation](#installation)
 * [Usage](#usage)
 * [Style guide](#style-guide)
@@ -13,6 +16,19 @@ Angular 2+ markdown to html using [marked](https://github.com/chjj/marked) a mar
 * [Donate](#donate)
 
 ----
+
+## Demonstration
+
+Get simple example demonstration usage from github [repository](https://github.com/ngx-markdown/demo) by opening your command line and do the following:
+
+```bash
+git clone https://github.com/ngx-markdown/demo.git
+npm install && npm start
+```
+
+Open http://localhost:4200/ in your browser.
+
+
 
 ## Installation
 
@@ -42,7 +58,20 @@ import { ExampleComponent } from './example.component';
     CommonModule,
 
     // internal
-    MarkdownModule    
+    MarkdownModule.forRoot({
+      // this options are defaults when use forChild().
+      options: {
+        gfm: true,
+        tables: true,
+        breaks: true,
+        pedantic: false,
+        sanitize: false,
+        smartLists: true,
+        smartypants: false
+      },
+      // template while loading
+      loadingTemplate: `<div> Loading ... </div>`
+    })    
   ],
   declarations: [ ]
 })
