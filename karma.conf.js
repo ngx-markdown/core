@@ -120,7 +120,7 @@ module.exports = function(config) {
         typescript({
           typescript: require('./node_modules/typescript')
         }),
-        uglify({}, uglifyEs.minify)
+        // uglify({}, uglifyEs.minify)
       ]
     },
 
