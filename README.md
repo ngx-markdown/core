@@ -43,12 +43,12 @@ npm install --save @ngx-markdown/core
 ### Attributes
 
 | name | Type | Description |
-|----------|----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|----------|----------------|---------------------------|
 | callback | ((error: any, parseResult: string) => void) \| undefined | Function performed after parse.  |
 | **interpolation** | Object \| undefined | Data property values to inject.  |
-| ngxmarkdown (directive) | string | Markdown string to be transformed to html code. |
-| **options** | marked.MarkedOptions \| undefined | Marked options how to parse string.  |
-| string (component) | string | Markdown string to be transformed to html code. |
+| ngxmarkdown (directive) | 0string | Markdown string to be parsed to html code. |
+| **options** | marked.MarkedOptions \| undefined | Marked options how to parse markdown string.  |
+| string (component) | string | Markdown string to be parsed to html code. |
 
 
 1. In file `./example.module.ts`
