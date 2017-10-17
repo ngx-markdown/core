@@ -40,6 +40,17 @@ npm install --save @ngx-markdown/core
 
 ## Usage
 
+### Attributes
+
+| name | Type | Description |
+|----------|----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| callback | ((error: any, parseResult: string) => void) \| undefined | Function performed after parse.  |
+| **interpolation** | Object \| undefined | Data property values to inject.  |
+| ngxmarkdown (directive) | string | Markdown string to be transformed to html code. |
+| **options** | marked.MarkedOptions \| undefined | Marked options how to parse string.  |
+| string (component) | string | Markdown string to be transformed to html code. |
+
+
 1. In file `./example.module.ts`
 ```typescript
 // external
@@ -91,8 +102,28 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './example.component.html'
 })
 export class ExampleComponent implements OnInit {
-  options = {};
-  callback = () => { };
+  stringToTransform = `**my bold**
+  [link](http://example.com)
+  {{language}}
+  `;
+  options = {
+    gfm: true,
+    tables: false, // changed
+    breaks: true,
+    pedantic: false,
+    sanitize: false,
+    smartLists: true,
+    smartypants: false
+  };
+  interpolate = {
+    language: 'I speak english'
+  };
+  callback = (error: any, result: string) => {
+    console.log(`callback`, error, result);
+  };
+  getResult(event) {
+    console.log(`result,`, event);
+  }
   constructor() { }
 
   ngOnInit() { }
@@ -102,14 +133,33 @@ export class ExampleComponent implements OnInit {
 
 3. In file `./example.component.html`
 ```html
-<div ngx-markdown [options]="options" [callback]="callback">
-  **my bold**
+<!-- Directive: ng-content -->
+<div ngx-markdown [interpolation]="interpolate" [options]="options" [callback]="callback">
+  **my bold** {{language}}
 </div>
 
-<ngx-markdown [options]="options" [callback]="callback">
+<!-- Component: ng-content -->
+<ngx-markdown [interpolation]="interpolate" [options]="options" [callback]="callback">
   **my bold**
   [link](http://example.com)
+  {{language}}
 </ngx-markdown>
+
+<!-- Component: dynamic with property `string` -->
+<ngx-markdown
+  [interpolation]="interpolate"
+  [options]="options"
+  [callback]="callback"
+  [string]="stringToTransform"
+  (result)="getResult($event)"></ngx-markdown>
+
+<!-- Directive: dynamic with property `ngxmarkdown` -->
+<div
+  [ngxmarkdown]="stringToTransform"
+  [callback]="callback"
+  [interpolation]="interpolate"
+  [options]="options"
+></div>
 
 ```
 
