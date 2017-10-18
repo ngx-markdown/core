@@ -8,8 +8,10 @@ Angular 2+ markdown to html module using [marked](https://github.com/chjj/marked
 * [Demonstration](#demonstration)
 * [Installation](#installation)
 * [Usage](#usage)
+* [Attributes](#attributes)
+* [Lifecycle Hooks](#lifecycle-hooks)
 * [Style guide](#style-guide)
-* Git
+* [Git](#git)
   * [Commit](#commit)
   * [Versioning](#versioning)
 * [License](#license)
@@ -23,6 +25,7 @@ Get simple example demonstration usage from github [repository](https://github.c
 
 ```bash
 git clone https://github.com/ngx-markdown/demo.git
+cd demo
 npm install && npm start
 ```
 
@@ -39,17 +42,6 @@ npm install --save @ngx-markdown/core
 ```
 
 ## Usage
-
-### Attributes
-
-| name | Type | Description |
-|----------|----------------|---------------------------|
-| callback | ((error: any, parseResult: string) => void) \| undefined | Function performed after parse.  |
-| **interpolation** | Object \| undefined | Data property values to inject.  |
-| ngxmarkdown (directive) | 0string | Markdown string to be parsed to html code. |
-| **options** | marked.MarkedOptions \| undefined | Marked options how to parse markdown string.  |
-| string (component) | string | Markdown string to be parsed to html code. |
-
 
 1. In file `./example.module.ts`
 ```typescript
@@ -162,6 +154,33 @@ export class ExampleComponent implements OnInit {
 ></div>
 
 ```
+
+## Attributes
+
+| name | Type | Description |
+|----------|----------------|---------------------------|
+| callback | ((error: any, parseResult: string) => void) \| undefined | Function called when the `string` has been fully parsed.  |
+| **interpolation** | Object \| undefined | Data property values to inject.  |
+| ngxmarkdown (directive) | 0string | *"String of markdown source to be compiled."* |
+| **options** | marked.MarkedOptions \| undefined | Marked options how to compile markdown `string`.  |
+| string (component) | string | *"String of markdown source to be compiled."* |
+
+
+## Lifecycle Hooks
+
+[Angular Lifecycle Hooks](https://angular.io/guide/lifecycle-hooks)
+
+When property `change` is set, its setter calls `markdownToHtml()` method to compile markdown string.
+
+**ngAfterViewInit()**    
+When input property `string` is `undefined`, store `ng-content` and set property `change` to `true`.
+
+**ngDoCheck()**
+Detect input property `options` changes with `KeyValueDiffers`, and set property `change` to `true` if detected.   
+
+**ngOnChanges()**    
+Detect input property `callback` and `string` changes, and set property `change` to `true` if detected.    
+
 
 ## Style guide
 
