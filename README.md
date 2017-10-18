@@ -159,9 +159,9 @@ export class ExampleComponent implements OnInit {
 
 | name | Type | Description |
 |----------|----------------|---------------------------|
-| callback | ((error: any, parseResult: string) => void) \| undefined | Function called when the `string` has been fully parsed.  |
+| callback | ((error: any, parseResult: string) => void) \| undefined | Function called when the `string` or `ngxmarkdown` has been fully parsed.  |
 | **interpolation** | Object \| undefined | Data property values to inject.  |
-| ngxmarkdown (directive) | 0string | *"String of markdown source to be compiled."* |
+| ngxmarkdown (directive) | string | *"String of markdown source to be compiled."* |
 | **options** | marked.MarkedOptions \| undefined | Marked options how to compile markdown `string`.  |
 | string (component) | string | *"String of markdown source to be compiled."* |
 
