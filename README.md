@@ -158,7 +158,7 @@ export class ExampleComponent implements OnInit {
 
 ## Attributes
 
-| name | Type | Description |
+| Name | Type | Description |
 |----------|----------------|---------------------------|
 | callback | ((error: any, parseResult: string) => void) \| undefined | Function called when the `string` or `ngxmarkdown` has been fully parsed.  |
 | **interpolation** | Object \| undefined | Data property values to inject.  |
@@ -169,7 +169,7 @@ export class ExampleComponent implements OnInit {
 
 ## Events
 
-| name | Type | Description |
+| Name | Type | Description |
 |----------|----------------|---------------------------|
 | result | string | It returns fully parsed markdown string. |
 
@@ -180,14 +180,11 @@ export class ExampleComponent implements OnInit {
 
 When property `change` is set, its setter calls `markdownToHtml()` method to compile markdown string.
 
-**ngAfterViewInit()**    
-When input property `string` is `undefined`, store `ng-content` and set property `change` to `true`.
+**ngAfterViewInit()**: When input property `string` is `undefined`, store `ng-content` and set property `change` to `true`.
 
-**ngDoCheck()**
-Detect input property `options` changes with `KeyValueDiffers`, and set property `change` to `true` if detected.   
+**ngDoCheck()**: Detect input property `options` changes with `KeyValueDiffers`, and set property `change` to `true` if detected.   
 
-**ngOnChanges()**    
-Detect input property `callback` and `string` changes, and set property `change` to `true` if detected.    
+**ngOnChanges()**: Detect input property `callback` and `string` changes, and set property `change` to `true` if detected.    
 
 
 ## Style guide
