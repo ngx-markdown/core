@@ -9,6 +9,7 @@ Angular 2+ markdown to html module using [marked](https://github.com/chjj/marked
 * [Installation](#installation)
 * [Usage](#usage)
 * [Attributes](#attributes)
+* [Events](#events)
 * [Lifecycle Hooks](#lifecycle-hooks)
 * [Style guide](#style-guide)
 * [Git](#git)
@@ -164,6 +165,13 @@ export class ExampleComponent implements OnInit {
 | ngxmarkdown (directive) | string | *"String of markdown source to be compiled."* |
 | **options** | marked.MarkedOptions \| undefined | Marked options how to compile markdown `string`.  |
 | string (component) | string | *"String of markdown source to be compiled."* |
+
+
+## Events
+
+| name | Type | Description |
+|----------|----------------|---------------------------|
+| result | string | It returns fully parsed markdown string. |
 
 
 ## Lifecycle Hooks
